@@ -20,7 +20,17 @@ app.controller('DashboardController', function($scope, $firebaseObject) {
   );
   $scope.data3 = $firebaseObject(firebaseLights);
 
+  $scope.lightsOn = true;
+  $scope.dark = function() {
+    if ($scope.data3.value>250) {
+      $scope.lightsOn = true;
+    } else {
+      $scope.lightsOn = false;
+    }
+  }
+
   $scope.view = 'Dashboard Controller';
+
 
   // $scope.tempAlert = function() {
   //   if (data.fahrenheit > 75 || data.fahrenheit < 65) {

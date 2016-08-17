@@ -3,7 +3,8 @@
   <div class="modules">
     <section>
       <h2>Current Temperature:</h2>
-      <p>{{data.fahrenheit}}</p>
+      <p>Inside: {{data.fahrenheit}}°C</p>
+      <p>Oustide: {data from API} °C</p>
     </section>
     <section>
       <h2>Garage Door:</h2>
@@ -11,7 +12,9 @@
     </section>
     <section>
       <h2>Light:</h2>
-      <p>{{data3.value}}</p>
+      <!-- <p>{{data3.value}}</p> -->
+      <p ng-class="{hidden: data3.value<250}">On</p>
+      <p ng-class="{hidden: data3.value>=250}">Off</p>
     </section>
     <section>
       <h2>Sprinklers:</h2>
@@ -19,10 +22,10 @@
     </section>
     <section class="alert">
       <h2>Alerts</h2>
-      <!-- <p ng-show="tempAlert">{{data.fahrenheit}}</p>
-      <p ng-show="doorAlert">Garage Door is {{data2.doors}}</p>
-      <p ng-show="lightAlert">The lights are ON</p>
-      <p ng-show="sprinklerAlert">CHECK SPRINKLERS ALERT!!!</p> -->
+      <p ng-class="{hidden: data.fahrenheit>18 && data.fahrenheit<25}">Temperature Alert! It's {{data.fahrenheit}} °C</p>
+      <p ng-class="{hidden: data2.doors==='closed'}">Garage Door is {{data2.doors}}</p>
+      <p ng-class="{hidden: data3.value<250}">The lights are ON</p>
+      <!-- <p ng-class="sprinklerAlert">CHECK SPRINKLERS ALERT!!!</p> -->
     </section>
   </div>
 </div>
